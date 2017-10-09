@@ -12,6 +12,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.disable_rescue=true \
     ro.build.selinux=1
 
 # Disable excessive dalvik debug messages
