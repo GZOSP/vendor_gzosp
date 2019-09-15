@@ -77,6 +77,8 @@ PRODUCT_PACKAGES += \
     FontArvoLatoOverlay \
     FontRubikRubikOverlay \
 
+-include vendor/gzosp/config/fonts.mk
+
 # Power whitelist
 PRODUCT_COPY_FILES += \
     vendor/gzosp/config/permissions/gzosp-power-whitelist.xml:system/etc/sysconfig/gzosp-power-whitelist.xml
