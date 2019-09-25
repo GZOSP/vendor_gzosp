@@ -87,7 +87,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Basic \
     LiveWallpapersPicker \
-    PhaseBeam
+    PhaseBeam \
+    ThemePicker
 
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += \
