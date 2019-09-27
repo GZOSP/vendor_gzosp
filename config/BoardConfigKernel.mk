@@ -121,11 +121,13 @@ else
   KERNEL_MAKE_FLAGS += HOSTCFLAGS="-I/usr/include -I/usr/include/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L/usr/lib64"
 endif
 
+TOOLS_PATH_OVERRIDE := LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/openssl/$(HOST_OS)-x86/1.1.1/lib:$$LD_LIBRARY_PATH
+
 ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
   KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
 
-TOOLS_PATH_OVERRIDE := \
+TOOLS_PATH_OVERRIDE += \
     PATH=$(BUILD_TOP)/prebuilts/tools-gzosp/$(HOST_OS)-x86/bin:$$PATH \
     LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-gzosp/$(HOST_OS)-x86/lib:$$LD_LIBRARY_PATH \
     PERL5LIB=$(BUILD_TOP)/prebuilts/tools-gzosp/common/perl-base
