@@ -68,12 +68,6 @@ PRODUCT_COPY_FILES += \
     vendor/gzosp/prebuilt/common/etc/permissions/privapp-permissions-gzr.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-gzr.xml \
     vendor/gzosp/prebuilt/common/etc/permissions/privapp-permissions-google.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-google.xml
 
-# Gzosp-specific startup services
-PRODUCT_COPY_FILES += \
-    vendor/gzosp/prebuilt/common/etc/init.d/00banner:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/00banner \
-    vendor/gzosp/prebuilt/common/etc/init.d/90userinit:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/90userinit \
-    vendor/gzosp/prebuilt/common/bin/sysinit:$(TARGET_COPY_OUT_SYSTEM)/bin/sysinit
-
 # Fonts
 PRODUCT_PACKAGES += \
     FontArbutusSourceOverlay \
