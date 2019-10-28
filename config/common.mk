@@ -79,6 +79,9 @@ PRODUCT_PACKAGES += \
 
 -include vendor/gzosp/config/fonts.mk
 
+PRODUCT_PACKAGES += \
+     OverlayStub
+
 # Power whitelist
 PRODUCT_COPY_FILES += \
     vendor/gzosp/config/permissions/gzosp-power-whitelist.xml:system/etc/sysconfig/gzosp-power-whitelist.xml
