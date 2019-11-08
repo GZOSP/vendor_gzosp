@@ -76,6 +76,7 @@ PRODUCT_PACKAGES += \
     FontArbutusSourceOverlay \
     FontArvoLatoOverlay \
     FontRubikRubikOverlay \
+    FontGoogleSansOverlay \
 
 -include vendor/gzosp/config/fonts.mk
 
