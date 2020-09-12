@@ -76,7 +76,7 @@ PRODUCT_PACKAGES += \
     FontRubikRubikOverlay \
     FontGoogleSansOverlay \
 
--include vendor/gzosp/config/fonts.mk
+#-include vendor/gzosp/config/fonts.mk
 
 PRODUCT_PACKAGES += \
      OverlayStub
