@@ -218,10 +218,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     gzosp.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
     ro.gzosp.version=$(GZOSP_VERSION) \
-    ro.modversion=$(GZOSP_MOD_VERSION) \
-    ro.gzosp.buildtype=$(GZOSP_BUILD_TYPE)
+    ro.mod.version=$(GZOSP_BUILD_TYPE)-$(GZOSP_BASE_VERSION)-$(BUILD_DATE) \
+    ro.gzosp.fingerprint=$(ROM_FINGERPRINT)
 
 # Google sounds
 include vendor/gzosp/google/GoogleAudio.mk
-
-EXTENDED_POST_PROCESS_PROPS := vendor/gzosp/tools/gzosp_process_props.py
