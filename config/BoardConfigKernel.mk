@@ -158,3 +158,6 @@ KERNEL_BUILD_OUT_PREFIX :=
 ifeq ($(OUT_DIR_PREFIX),out)
 KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
 endif
+
+# Set use the full path to the make command
+KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/make

@@ -1,3 +1,5 @@
+// GZOSP soong configs
+
 bootstrap_go_package {
     name: "soong-gzosp-generator",
     pkgPath: "gzosp/soong/generator",
