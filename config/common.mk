@@ -159,11 +159,48 @@ PRODUCT_PACKAGES += \
 # Common overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/gzosp/overlay/common
 
+# Boot animation include
+ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
+
+# determine the smaller dimension
+TARGET_BOOTANIMATION_SIZE := $(shell \
+  if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
+    echo $(TARGET_SCREEN_WIDTH); \
+  else \
+    echo $(TARGET_SCREEN_HEIGHT); \
+  fi )
+
+# get a sorted list of the sizes
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/gzosp/prebuilt/common/bootanimation))
+bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
+
+# find the appropriate size and set
+define check_and_set_bootanimation
+$(eval TARGET_BOOTANIMATION_NAME := $(shell \
+  if [ -z "$(TARGET_BOOTANIMATION_NAME)" ]; then \
+    if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
+      echo $(1); \
+      exit 0; \
+    fi; \
+  fi; \
+  echo $(TARGET_BOOTANIMATION_NAME); ))
+endef
+$(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
+
+ifeq ($(TARGET_BOOTANIMATION_HALF_RES),true)
+PRODUCT_COPY_FILES += \
+    vendor/gzosp/prebuilt/common/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+else
+PRODUCT_COPY_FILES += \
+    vendor/gzosp/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
+endif
+endif
+
 # Versioning System
 # gzosp first version.
 PRODUCT_VERSION_MAJOR = 11
-PRODUCT_VERSION_MINOR = R-Alpha
-PRODUCT_VERSION_MAINTENANCE = 1.0
+PRODUCT_VERSION_MINOR = R
+PRODUCT_VERSION_MAINTENANCE = 2.0
 GZOSP_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
 ifdef GZOSP_BUILD_EXTRA
     GZOSP_POSTFIX := -$(GZOSP_BUILD_EXTRA)
@@ -180,6 +217,7 @@ GZOSP_MOD_VERSION := Gzosp-$(GZOSP_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VER
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID="$(BUILD_ID)-$(BUILD_USERNAME)@$(BUILD_HOSTNAME)"
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    gzosp.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
     ro.modversion=Gzosp-$(GZOSP_VERSION) \
     ro.gzosp.version=$(GZOSP_VERSION) \
     ro.mod.version=$(GZOSP_BUILD_TYPE)-$(GZOSP_BASE_VERSION)-$(BUILD_DATE) \
