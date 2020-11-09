@@ -96,6 +96,7 @@ PRODUCT_PACKAGES += \
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \
+    IconShapeSquareOverlay \
     LiveWallpapersPicker \
     PhaseBeam \
     ThemePicker
