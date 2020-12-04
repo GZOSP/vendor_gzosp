@@ -27,14 +27,6 @@
         <permission name="android.permission.RESET_BATTERY_STATS"/>
     </privapp-permissions>
 
-    <!-- Additional permissions for Snap -->
-    <privapp-permissions package="org.lineageos.snap">
-        <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-        <permission name="android.permission.PREVENT_POWER_KEY"/>
-        <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
-        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
-    </privapp-permissions>
-
     <!-- Additional permissions for camera2 -->
     <privapp-permissions package="com.android.camera2">
         <permission name="android.permission.BIND_WALLPAPER"/>

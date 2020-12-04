@@ -67,16 +67,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/gzosp/prebuilt/common/etc/permissions/privapp-permissions-gzr.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-gzr.xml \
     vendor/gzosp/prebuilt/common/etc/permissions/privapp-permissions-google.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-google.xml \
-    vendor/gzosp/config/permissions/privapp-permissions-gzosp-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gzosp.xml
+    vendor/gzosp/config/permissions/privapp-permissions-gzosp-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gzosp.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/android.software.live_wallpaper.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.live_wallpaper.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2017.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2017.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2018.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2018.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2019_midyear.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2019_midyear.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2019.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2019.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2019.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2019.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2020_midyear.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2020_midyear.xml \
+    vendor/gzosp/prebuilt/common/etc/permissions/pixel_experience_2020.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_experience_2020.xml \
 
-# Fonts
-PRODUCT_PACKAGES += \
-    FontArbutusSourceOverlay \
-    FontArvoLatoOverlay \
-    FontRubikRubikOverlay \
-    FontGoogleSansOverlay \
-
-#-include vendor/gzosp/config/fonts.mk
 
 PRODUCT_PACKAGES += \
      OverlayStub
@@ -90,16 +90,20 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
     SpareParts \
-    LockClock \
+    DeskClock \
     su
 
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \
     IconShapeSquareOverlay \
-    LiveWallpapersPicker \
     PhaseBeam \
-    ThemePicker
+    ThemePicker \
+    LiveWallpapersPicker \
+    PixelThemesStub \
+    PixelWallpapers2020 \
+    PixelLiveWallpaperPrebuilt \
+    WallpaperPickerGoogleRelease
 
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += \
@@ -117,9 +121,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_PACKAGES += \
     Calculator \
     LatinIME \
-    BluetoothExt \
-    Launcher3Dark
-
+    BluetoothExt 
 
 # Extra tools
 PRODUCT_PACKAGES += \
@@ -208,7 +210,7 @@ ifdef GZOSP_BUILD_EXTRA
 endif
 
 ifndef GZOSP_BUILD_TYPE
-    GZOSP_BUILD_TYPE := UNOFFICIAL
+    GZOSP_BUILD_TYPE := TESTING
 endif
 
 # Set all versions
@@ -226,3 +228,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Google sounds
 include vendor/gzosp/google/GoogleAudio.mk
+
+# Fonts
+include vendor/gzosp/config/fonts.mk
+

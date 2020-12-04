@@ -17,3 +17,7 @@
 <permissions>
     <feature name="vendor.lineage.biometrics.fingerprint.inscreen" />
 </permissions>
+
+<permissions>
+    <feature name="com.google.android.settings.intelligence.IntelligenceApplication" />
+</permissions>
