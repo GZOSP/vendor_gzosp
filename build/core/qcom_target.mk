@@ -26,5 +26,5 @@ PRODUCT_CFI_INCLUDE_PATHS += \
 
 PRODUCT_SOONG_NAMESPACES += \
     $(call project-path-for,qcom-data-ipa-cfg-mgr)
-    $(call project-path-for,qcom-dataservices)
+
 endif
